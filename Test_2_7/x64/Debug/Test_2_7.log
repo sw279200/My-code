@@ -1,0 +1,3 @@
+﻿  test.c
+D:\Project\C\Test_2_7\test.c(27,21): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+  Test_2_7.vcxproj -> D:\Project\C\Test_2_7\x64\Debug\Test_2_7.exe
