@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-D:\Project\C\test_2_5\x64\Debug\test_2_5.exe
-=======
-D:\Project\C\test_2_5\x64\Debug\test_2_5.exe
->>>>>>> 6468e2cf8e09c6a3001d43ca944523668294f635
