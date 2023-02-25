@@ -73,55 +73,74 @@
 //	
 //	return flag;
 //}
-int is_reveser(char* str1,char* str2)
-{
-	int len = strlen(str1);
-	int i = 0;
-	//左旋转
-	for (i = 0; i < len; i++)
-	{
-		char temp = *str1; //把第一个字符存起来
-		int j = 0;
-		for (j = 0; j < len-1; j++)
-		{
-			*(str1+j) = *(str1+j+1);
-		}
-		*(str1+len-1) = temp;//把存好的字符放在最后面
-		if (strcmp(str1, str2) == 0)
-		{
-			return 1;
-		}
-	}
-	//右旋转
-	for (i = 0; i < len; i++)
-	{
-		char temp = *(str1 + len - 1);//把最后一个字符存起来
-		int j = 0;
-		for (j = 1; j < len; j++)
-		{
-			*(str1 +len- j) = *(str1 +len- j - 1);
-		}
-		*(str1) = temp;//把存放的字符放在第一位
-		if (strcmp(str1, str2) == 0)
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
+//int is_reveser(char* str1,char* str2)
+//{
+//	int len = strlen(str1);
+//	int i = 0;
+//	//左旋转
+//	for (i = 0; i < len; i++)
+//	{
+//		char temp = *str1; //把第一个字符存起来
+//		int j = 0;
+//		for (j = 0; j < len-1; j++)
+//		{
+//			*(str1+j) = *(str1+j+1);
+//		}
+//		*(str1+len-1) = temp;//把存好的字符放在最后面
+//		if (strcmp(str1, str2) == 0)
+//		{
+//			return 1;
+//		}
+//	}
+//	//右旋转
+//	for (i = 0; i < len; i++)
+//	{
+//		char temp = *(str1 + len - 1);//把最后一个字符存起来
+//		int j = 0;
+//		for (j = 1; j < len; j++)
+//		{
+//			*(str1 +len- j) = *(str1 +len- j - 1);
+//		}
+//		*(str1) = temp;//把存放的字符放在第一位
+//		if (strcmp(str1, str2) == 0)
+//		{
+//			return 1;
+//		}
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	char str1[20];
+//	char str2[20];
+//	scanf("%s", str1);
+//	scanf("%s", str2);
+//	if (is_reveser(str1, str2))
+//	{
+//		printf("该字符串是str1旋转后的字符串\n");
+//	}
+//	else
+//	{
+//		printf("该字符串不是str1旋转后的字符串\n");
+//	}
+//	return 0;
+//}
+#include <stdio.h>
 int main()
 {
-	char str1[20];
-	char str2[20];
-	scanf("%s", str1);
-	scanf("%s", str2);
-	if (is_reveser(str1, str2))
-	{
-		printf("该字符串是str1旋转后的字符串\n");
-	}
+	char str1[] = "hello bit.";
+	char str2[] = "hello bit.";
+	const char* str3 = "hello bit.";
+	const char* str4 = "hello bit.";
+	if (str1 == str2)
+		printf("str1 and str2 are same\n");
 	else
-	{
-		printf("该字符串不是str1旋转后的字符串\n");
-	}
+		printf("str1 and str2 are not same\n");
+
+	if (str3 == str4)
+		printf("str3 and str4 are same\n");
+	else
+		printf("str3 and str4 are not same\n");
+
 	return 0;
 }
