@@ -1,31 +1,31 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdlib.h>
 #include<stdio.h>
-typedef struct stu {
+typedef struct stu {//这里定义了一个结构体类型s
 	char name[50];
 	int age;
 }s;
-typedef struct Str {
+typedef struct Str {  //这是把一个字符数组放在我们的结构体当中，为的是方便实现我们的字符串排序
 	char str[50];
 }k;
-int cmp_age(const void* p1, const void* p2)
+int cmp_age(const void* p1, const void* p2)//这是针对结构体s中的age排序实现的一个函数
 {
-	return ((s*)p1)->age - ((s*)p2)->age;
+	return ((s*)p1)->age - ((s*)p2)->age;//这里是把void*强制转换成结构体指针s*，通过s*再来找到结构体成员age进行排序
 }
-int cmp_name(const void* p1, const void* p2)
+int cmp_name(const void* p1, const void* p2)//这是针对结构体s中的name排序实现的一个函数
 {
-	return strcmp(((s*)p1)->name, ((s*)p2)->name);
+	return strcmp(((s*)p1)->name, ((s*)p2)->name);//这里是把void*强制转换成结构体指针s*，通过s*再来找到结构体成员name进行排序
 }
 void print_arr(int arr[], int sz)
 {
 	int i = 0;
-	for (i = 0; i < sz; i++)
+	for (i = 0; i < sz; i++)//打印整型数组，方便看排序后的数组
 	{
 		printf("%d ", arr[i]);
 	}
 	printf("\n");
 }
-void print_str(k arr[], int sz)
+void print_str(k arr[], int sz)//打印排序后的字符串
 {
 	int i = 0;
 	for (i = 0; i < sz; i++)
@@ -34,7 +34,7 @@ void print_str(k arr[], int sz)
 	}
 	printf("\n");
 }
-void print_struct(s arr[],int sz)
+void print_struct(s arr[],int sz)//打印结构体成员的值
 {
 	int i = 0;
 	for (i = 0; i < sz; i++)
@@ -44,11 +44,11 @@ void print_struct(s arr[],int sz)
 	}
 	printf("\n");
 }
-int cmp_str(const void* p1, const void* p2)
+int cmp_str(const void* p1, const void* p2)//针对字符串排序实现的一个比较函数
 {
 	return strcmp(((k*)p1)->str, ((k*)p2)->str);
 }
-int cmp_int(const void* p1, const void* p2)
+int cmp_int(const void* p1, const void* p2)//针对整型数据排序实现的一个比较函数
 {
 	return *(int*)p1 - *(int*)p2;
 }
