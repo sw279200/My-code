@@ -44,7 +44,7 @@ int main() {
 		case 1:
 			game();
 			break;
-		case 2:
+		case 0:
 			printf("ÍË³öÓÎÏ·\n");
 			break;
 		default:

@@ -1,5 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-#define _CRT_SECURE_NO_WARNINGS 1
 #include"game3.h"
 
 void InitBoard(char arr[ROWS][COLS], int rows, int cols, char set)

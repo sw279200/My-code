@@ -1,1 +1,2 @@
 D:\Project\C\Text_1_31\x64\Debug\Test_1_31.exe
+D:\Code\sw_test_c\Test_1_31\x64\Debug\Test_1_31.exe
