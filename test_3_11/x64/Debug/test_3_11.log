@@ -1,14 +1,2 @@
 ﻿  test.c
-D:\Code\sw_test_c\test_3_11\test.c(78,10): warning C4477: “scanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 2 拥有了类型“__int64 *”
-D:\Code\sw_test_c\test_3_11\test.c(78,10): message : 请考虑在格式字符串中使用“%lld”
-D:\Code\sw_test_c\test_3_11\test.c(78,10): message : 请考虑在格式字符串中使用“%Id”
-D:\Code\sw_test_c\test_3_11\test.c(78,10): message : 请考虑在格式字符串中使用“%I64d”
-D:\Code\sw_test_c\test_3_11\test.c(78,10): warning C4477: “scanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 3 拥有了类型“__int64 *”
-D:\Code\sw_test_c\test_3_11\test.c(78,10): message : 请考虑在格式字符串中使用“%lld”
-D:\Code\sw_test_c\test_3_11\test.c(78,10): message : 请考虑在格式字符串中使用“%Id”
-D:\Code\sw_test_c\test_3_11\test.c(78,10): message : 请考虑在格式字符串中使用“%I64d”
-D:\Code\sw_test_c\test_3_11\test.c(84,9): warning C4305: “=”: 从“__int64”到“int”截断
-D:\Code\sw_test_c\test_3_11\test.c(86,21): warning C4047: “<”:“int”与“int [100000]”的间接级别不同
-D:\Code\sw_test_c\test_3_11\test.c(92,20): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
-D:\Code\sw_test_c\test_3_11\test.c(101,12): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
   test_3_11.vcxproj -> D:\Code\sw_test_c\test_3_11\x64\Debug\test_3_11.exe
