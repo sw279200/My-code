@@ -33,66 +33,47 @@
 //	return 0;
 //}
 
-
-
 #include<stdio.h>
-long long arr1[100010] = { 0 };
-long long arr2[100010] = { 0 };
+char arr1[200010] = { ' ' };
+char arr2[200010] = { ' ' };
 //把一个n位数的各个位数上的数存在数组中
-void eval(long long arr[], int n,long long num)
-{
-	while (n--)
-	{
-		*(arr + n) = num % 10;
-		num /= 10;
-	}
-	*(arr + n) = num;
-}
 
+void solve()
+{
+    int n = 0;
+    scanf("%d", &n);
+    char* A = arr1 + 1;
+    char* B = arr2 + 1;
+    scanf("%s", A);
+    scanf("%s", B);
+    int m = 0;
+    for (m = 1; m <= n; m++)
+    {
+        if (arr1[m] > arr2[m])
+        {
+            printf("%d %d\n", m, m);
+            return;
+        }
+    }
+    for (m = 1; m <= n; m++)
+    {
+        if (arr1[m] == arr2[m])
+        {
+            printf("%d %d\n", m, m);
+            return;
+        }
+    }
+    printf("%d %d\n", n, n);
+}
 int main()
 {
-	int T = 0;
-	scanf("%d", &T);
-	
-	while (T--)
-	{
-		int n = 0;
-		scanf("%d", &n);
-		long long A = 0;
-		long long B = 0;
-		scanf("%lld", &A);
-		scanf("%lld", &B);
-		int ret;
-		eval(arr1, n, A);
-		eval(arr2, n, B);
-		if (A >B)
-		{
-			int m = 0;
-			for (m = 0; m < n; m++)
-			{
-				if (arr1[m] > arr2[m])
-				{
-					printf("%d %d\n", m, m);
-					break;
-				}
-			}
-			
-		}
-		else if (A < B)
-		{
-			int i = 0;
-			for (i = 0; i < n; i++)
-			{
-				int j = 0;
-				for (j = 0; j < n; j++)
-				{
-					if (*(arr1 + j) > *(arr2 + i))
-					{
+    int T = 0;
+    scanf("%d", &T);
 
-					}
-				}
-		}
-	}
-	return 0;
+    while (T--)
+    {
+        solve();
+    }
+    return 0;
 }
 
