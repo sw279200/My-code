@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ï»¿#define _CRT_SECURE_NO_WARNINGS 1
 
 //å°ç™½æœˆèµ›64 Bé¢˜æ•é±¼è¾¾äºº
@@ -5,13 +6,26 @@
 #include<math.h>
 #include<stdlib.h>
 int (max)(int a, int b)
+=======
+#define _CRT_SECURE_NO_WARNINGS 1
+
+//Ğ¡°×ÔÂÈü64 BÌâ²¶Óã´ïÈË
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+int max(int a, int b)
+>>>>>>> f3085594ccece8af816ed76ff4cdfe94c3a64f8d
 {
 	return ((a > b) ? a : b);
 }
 char arr[1010][1010];
 int main()
 {
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> f3085594ccece8af816ed76ff4cdfe94c3a64f8d
 	int n = 0;
 	int m = 0;
 	int ret = 0;
