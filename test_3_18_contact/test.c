@@ -48,7 +48,8 @@ int main()
 		{
 		case EXIT:
 			//退出通讯录
-			printf("退出成功\n");
+			DestroyContact(&con);
+			printf("退出通讯录\n");
 			break;
 		case ADD:
 			//增加联系人

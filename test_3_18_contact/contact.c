@@ -1,22 +1,73 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"contact.h"
 
+////静态版本
+////初始化通讯录
+//void InitContact(Contact* pc)
+//{
+//	pc->sz = 0;
+//	memset(pc->data, 0, sizeof(pc->data));
+//}
 
-//初始化通讯录
+//动态版本的通讯录初始化
 void InitContact(Contact* pc)
 {
+	PeoInfo* ptr = (PeoInfo*)malloc(DAFAULT_SZ * sizeof(PeoInfo));
+	if (NULL == ptr)
+	{
+		printf("通讯录初始化失败:%s\n", strerror(errno));
+		return;
+	}
+	pc->data = ptr;
+	pc->capacity = DAFAULT_SZ;
 	pc->sz = 0;
-	memset(pc->data, 0, sizeof(pc->data));
 }
-//输入一个电话号码验证该电话号码是否已存在
-
-//实现添加指定联系人
+//销毁通讯录
+void DestroyContact(Contact* pc)
+{
+	free(pc->data);
+	pc->data = NULL;
+	pc->capacity = 0;
+	pc->sz = 0;
+	printf("释放内存\n");
+}
+////静态版本
+////实现添加指定联系人
+//void AddContact(Contact* pc)
+//{
+//	if (pc->sz == MAX_DATA)
+//	{
+//		printf("通讯录已满，无法添加!\n");
+//		return;
+//	}
+//	printf("请输入姓名:>\n");
+//	scanf("%s", pc->data[pc->sz].name);
+//	printf("请输入性别:>\n");
+//	scanf("%s", pc->data[pc->sz].sex);
+//	printf("请输入年龄:>\n");
+//	scanf("%d", &(pc->data[pc->sz].age));
+//	printf("请输入电话:>\n");
+//	scanf("%s", pc->data[pc->sz].tele);
+//	//优化时加一个判断条件
+//	printf("请输入地址:>\n");
+//	scanf("%s", pc->data[pc->sz].addr);
+//	pc->sz++;
+//	printf("添加成功!\n");
+//}
 void AddContact(Contact* pc)
 {
-	if (pc->sz == MAX_DATA)
+	if (pc->capacity == pc->sz)
 	{
-		printf("通讯录已满，无法添加!\n");
-		return;
+		PeoInfo* ptr = (PeoInfo*)realloc(pc->data, INC_SZ * sizeof(PeoInfo));
+		if (ptr == NULL)
+		{
+			printf("扩容失败:%s\n", strerror(errno));
+			return;
+		}
+		pc->data = ptr;
+		pc->capacity += INC_SZ;
+		printf("增容成功\n");
+		printf("当前容量为:%d\n", pc->capacity);
 	}
 	printf("请输入姓名:>\n");
 	scanf("%s", pc->data[pc->sz].name);

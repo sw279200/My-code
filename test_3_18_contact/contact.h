@@ -2,11 +2,14 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include<errno.h>
 #define MAX_NAME 40
 #define MAX_SEX 20
 #define MAX_TELE 30
 #define MAX_ADDR 50
 #define MAX_DATA 1000
+#define DAFAULT_SZ   3 //初始化容量
+#define INC_SZ   2   //每次增加的容量
 //定义一个结构体存放通讯录联系人信息
 typedef struct PeoInfo{
 	char name[MAX_NAME];
@@ -18,13 +21,17 @@ typedef struct PeoInfo{
 
 //通讯录
 typedef struct Contact {
-	PeoInfo data[MAX_DATA];
-	int sz;
+	PeoInfo *data;//存放通讯录信息
+	int sz;//记录通讯录的大小
+	int capacity;//记录当前容量
 }Contact;
 
 
 //初始化通讯录
 void InitContact(Contact * pc);
+
+//销毁通讯录
+void DestroyContact(Contact* pc);
 
 //添加指定联系人
 void AddContact(Contact* pc);
