@@ -50,3 +50,7 @@ void ModifyContact(Contact* pc);
 
 //对通讯录进行排序
 void SortContact(Contact* pc);
+
+
+//将通讯录中的信息保存到文件当中
+void SaveContact(Contact * pc);

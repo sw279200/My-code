@@ -48,6 +48,7 @@ int main()
 		{
 		case EXIT:
 			//退出通讯录
+			SaveContact(&con);
 			DestroyContact(&con);
 			printf("退出通讯录\n");
 			break;

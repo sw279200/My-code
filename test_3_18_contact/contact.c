@@ -9,6 +9,29 @@
 //	memset(pc->data, 0, sizeof(pc->data));
 //}
 
+int CheckCapacity(Contact* pc);
+void LoadContact(Contact* pc)
+{
+	//打开文件
+	FILE* pf = fopen("test.dat", "rb");
+	if (pf == NULL)
+	{
+		perror("LoadContact::fopen");
+		return;
+	}
+	//加载文件内容到通讯录中
+	PeoInfo temp = { 0 };
+	while (fread(&temp, sizeof(PeoInfo), 1, pf))
+	{
+		CheckCapacity(pc);
+		pc->data[pc->sz] = temp;
+		pc->sz++;
+
+	}
+	//关闭文件
+	fclose(pf);
+	pf = NULL;
+}
 //动态版本的通讯录初始化
 void InitContact(Contact* pc)
 {
@@ -21,6 +44,9 @@ void InitContact(Contact* pc)
 	pc->data = ptr;
 	pc->capacity = DAFAULT_SZ;
 	pc->sz = 0;
+
+	//加载文件到通讯录中
+	LoadContact(pc);
 }
 //销毁通讯录
 void DestroyContact(Contact* pc)
@@ -54,7 +80,8 @@ void DestroyContact(Contact* pc)
 //	pc->sz++;
 //	printf("添加成功!\n");
 //}
-void AddContact(Contact* pc)
+
+int CheckCapacity(Contact* pc)
 {
 	if (pc->capacity == pc->sz)
 	{
@@ -62,26 +89,42 @@ void AddContact(Contact* pc)
 		if (ptr == NULL)
 		{
 			printf("扩容失败:%s\n", strerror(errno));
-			return;
+			return 0;
 		}
-		pc->data = ptr;
-		pc->capacity += INC_SZ;
-		printf("增容成功\n");
-		printf("当前容量为:%d\n", pc->capacity);
+		else
+		{
+			pc->data = ptr;
+			pc->capacity += INC_SZ;
+			printf("增容成功\n");
+			printf("当前容量为:%d\n", pc->capacity);
+			return 1;
+		}
 	}
-	printf("请输入姓名:>\n");
-	scanf("%s", pc->data[pc->sz].name);
-	printf("请输入性别:>\n");
-	scanf("%s", pc->data[pc->sz].sex);
-	printf("请输入年龄:>\n");
-	scanf("%d", &(pc->data[pc->sz].age));
-	printf("请输入电话:>\n");
-	scanf("%s", pc->data[pc->sz].tele);
-	//优化时加一个判断条件
-	printf("请输入地址:>\n");
-	scanf("%s", pc->data[pc->sz].addr);
-	pc->sz++;
-	printf("添加成功!\n");
+	return 1;
+}
+void AddContact(Contact* pc)
+{
+	if (CheckCapacity == 0)
+	{
+		printf("空间不够，扩容失败\n");
+		return;
+	}
+	else
+	{
+		printf("请输入姓名:>\n");
+		scanf("%s", pc->data[pc->sz].name);
+		printf("请输入性别:>\n");
+		scanf("%s", pc->data[pc->sz].sex);
+		printf("请输入年龄:>\n");
+		scanf("%d", &(pc->data[pc->sz].age));
+		printf("请输入电话:>\n");
+		scanf("%s", pc->data[pc->sz].tele);
+		//优化时加一个判断条件
+		printf("请输入地址:>\n");
+		scanf("%s", pc->data[pc->sz].addr);
+		pc->sz++;
+		printf("添加成功!\n");
+	}
 }
 
 
@@ -203,4 +246,26 @@ void SortContact(Contact* pc)
 {
 	qsort(pc->data, pc->sz, sizeof(pc->data[0]), cmp_name);
 	printf("排序成功!\n");
+}
+
+
+void SaveContact(Contact* pc)
+{
+	//打开文件
+	FILE* pf = fopen("test.dat", "wb");
+	if (pf == NULL)
+	{
+		perror("SaveContact::fopen");
+		return;
+	}
+	//写数据
+	int i = 0;
+	for (i = 0; i < pc->sz; i++)
+	{
+		fwrite(pc->data + i, sizeof(struct PeoInfo), 1, pf);
+	}
+	//关闭文件
+	fclose(pf);
+	pf = NULL;
+	printf("保存成功\n");
 }
