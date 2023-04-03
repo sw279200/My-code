@@ -58,48 +58,43 @@ int Max(int x, int y)
 {
 	return x > y ? x : y;
 }
-int len(char* str)
-{
-	char* ps = str;
-	int ans = 0;
-	while (*ps != '\0')
-	{
-		if (*ps == '0')
-		{
-			int count = 0;
-			while ((*(ps++) != '1' || *(ps++) != '2'))
-			{
-				count++;
-				ps++;
-			}
-			ps++;
-			ans = Max(ans, count);
-		}
-		if (*ps == '1' || *ps == '2')
-		{
-			int num = 0;
-			while (*(ps++) != '0')
-			{
-				num++;
-				ps++;
-			}
-			ps++;
-			ans = Max(ans, num);
-		}
-		
-	}
-	return ans;
-}
+
 void solve()
 {
 	int n = 0;
 	scanf("%d", &n);
-	while (n--)
+	scanf("%s", str);
+	int ans = 1;
+	int i = 0;
+	for (i = 0; i < n; i++)
 	{
-		scanf("%s", str);
-		printf("%d\n", len(str));
+		if (str[i] != '1')
+		{
+			int j = i;
+			while (j < n && str[j] != '1')
+			{
+				j++;
+			}
+			ans = Max(ans, j-i);
+			j--;
+			i = j;
+		}
 	}
-
+	for (i = 0; i < n; i++)
+	{
+		if (str[i] != '0')
+		{
+			int j = i;
+			while (j < n && str[j] != '0')
+			{
+				j++;
+			}
+			ans = Max(ans, j - i);
+			j--;
+			i = j;
+		}
+	}
+	printf("%d\n", ans);
 }
 int main()
 {
