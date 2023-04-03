@@ -50,8 +50,8 @@
 //int main()
 //{
 //	//打开文件
-//	FILE* pf = fopen("test.txt", "r");
-//	if (pf == NULL)
+//	file* pf = fopen("test.txt", "r");
+//	if (pf == null)
 //	{
 //		perror("fopen");
 //		return 1;
@@ -67,7 +67,7 @@
 //	
 //	//关闭文件
 //	fclose(pf);
-//	pf == NULL;
+//	pf == null;
 //	return 0;
 //}
 
@@ -146,33 +146,33 @@
 //	return 0;
 //}
 
-////测试fscanf函数
-//
-//#include<stdio.h>
-//typedef struct S 
-//{
-//	char arr[20];
-//	float f;
-//	int n;
-//}S;
-//int main()
-//{
-//	S s = { 0 };
-//	//打开文件
-//	FILE* pf = fopen("test.txt", "r");
-//	if (pf == NULL)
-//	{
-//		perror("fopen");
-//		return 1;
-//	}
-//	//读文件
-//	fscanf(pf, "%s %f %d", s.arr, &(s.f), &(s.n));
-//	printf("%s %f %d\n", s.arr, s.f, s.n);
-//	//关闭文件
-//	fclose(pf);
-//	pf = NULL;
-//	return 0;
-//}
+//测试fscanf函数
+
+#include<stdio.h>
+typedef struct S 
+{
+	char arr[20];
+	float f;
+	int n;
+}S;
+int main()
+{
+	S s = { 0 };
+	//打开文件
+	FILE* pf = fopen("test.txt", "r");
+	if (pf == NULL)
+	{
+		perror("fopen");
+		return 1;
+	}
+	//读文件
+	fscanf(pf, "%s %f %d", s.arr, &(s.f), &(s.n));
+	printf("%s %f %d\n", s.arr, s.f, s.n);
+	//关闭文件
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
 
 
 //#include<stdio.h>
