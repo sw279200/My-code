@@ -38,6 +38,6 @@ void ListTest2()
 }
 int main()
 {
-	ListTest1();
+	ListTest2();
 	return 0;
 }
