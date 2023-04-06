@@ -2,7 +2,7 @@
 
 //#include<stdio.h>
 //#include<string.h>
-////打印菱形图案
+////鎵撳嵃鑿卞舰鍥炬
 //int main()
 //{
 //	int n = 0;
@@ -10,11 +10,11 @@
 //	scanf("%c", &ch);
 //	scanf("%d", &n);
 //	int line = n / 2 + 1;
-//	//打印上半部分
+//	//鎵撳嵃涓婂崐閮ㄥ垎
 //	int i = 0;
 //	for (i = 0; i < line; i++)
 //	{
-//		//打印空格
+//		//鎵撳嵃绌烘牸
 //		int j = 0;
 //		for (j = 0; j < line - 1 - i; j++)
 //		{
@@ -23,7 +23,7 @@
 //		
 //		for (j = 0; j < 2 * i + 1; j++)
 //		{
-//			//打印字符
+//			//鎵撳嵃瀛楃
 //			if (j == 0 || j == 2 * i)
 //				printf("%c", ch + i);
 //			else
@@ -32,11 +32,11 @@
 //		}
 //		printf("\n");
 //	}
-//	//打印下半部分
+//	//鎵撳嵃涓嬪崐閮ㄥ垎
 //	for (i = 0; i < line - 1; i++)
 //	{
 //		int j = 0;
-//		//打印空格
+//		//鎵撳嵃绌烘牸
 //		for (j = 0; j <= i; j++)
 //		{
 //			printf(" ");
@@ -44,7 +44,7 @@
 //		
 //		for (j = 0; j < 2 * (line - 1 - i) - 1; j++)
 //		{
-//			//打印字符
+//			//鎵撳嵃瀛楃
 //			if (j == 0 || j==2*(line-i-2))
 //				printf("%c", ch + line - i - 2);
 //			else
@@ -129,5 +129,6 @@ int main()
 		test();
 	}
 	return 0;
+    
 }
 
