@@ -30,14 +30,14 @@ void SListPushBack(SLTNode** pphead, SLTDataType x)
 	}
 	else
 	{
-		// ÕÒÎ²½ÚµãµÄÖ¸Õë
+		// æ‰¾å°¾èŠ‚ç‚¹çš„æŒ‡é’ˆ
 		SLTNode* tail = *pphead;
 		while (tail->next != NULL)
 		{
 			tail = tail->next;
 		}
 
-		// Î²½Úµã£¬Á´½ÓĞÂ½Úµã
+		// å°¾èŠ‚ç‚¹ï¼Œé“¾æ¥æ–°èŠ‚ç‚¹
 		tail->next = newnode;
 	}
 }
@@ -60,9 +60,7 @@ void SListPopFront(SLTNode** pphead)
 
 void SListPopBack(SLTNode** pphead)
 {
-	// 1¡¢¿Õ
-	// 2¡¢Ò»¸ö½Úµã
-	// 3¡¢Ò»¸öÒÔÉÏµÄ½Úµã
+	
 	if (*pphead == NULL)
 	{
 		return;
@@ -104,7 +102,7 @@ SLTNode* SListFind(SLTNode* phead, SLTDataType x)
 	return NULL;
 }
 
-// ÔÚposµÄÇ°Ãæ²åÈëx
+// åœ¨posçš„å‰é¢æ’å…¥x
 void SListInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x)
 {
 	if (pos == *pphead)
@@ -125,7 +123,6 @@ void SListInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x)
 	}
 }
 
-// É¾³ıposÎ»ÖÃµÄÖµ
 void SListErase(SLTNode** pphead, SLTNode* pos)
 {
 	if (pos == *pphead)
