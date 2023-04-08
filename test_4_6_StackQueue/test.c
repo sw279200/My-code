@@ -54,7 +54,7 @@ void QueueTest()
 }
 int main()
 {
-	//StackTest();
-	QueueTest();
+	StackTest();
+	//QueueTest();
 	return 0;
 }
