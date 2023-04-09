@@ -1,0 +1,8 @@
+﻿  test.c
+D:\Code\sw_test_c\test_4_8\test.c(355,18): warning C4013: “malloc”未定义；假设外部返回 int
+D:\Code\sw_test_c\test_4_8\test.c(356,45): warning C4047: “=”:“int *”与“int”的间接级别不同
+D:\Code\sw_test_c\test_4_8\test.c(355,12): warning C4047: “初始化”:“Stack *”与“int”的间接级别不同
+D:\Code\sw_test_c\test_4_8\test.c(379,5): warning C4013: “free”未定义；假设外部返回 int
+D:\Code\sw_test_c\test_4_8\test.c(388,14): warning C4047: “初始化”:“MyQueue *”与“int”的间接级别不同
+MSVCRTD.lib(exe_main.obj) : error LNK2019: 无法解析的外部符号 main，函数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 中引用了该符号
+D:\Code\sw_test_c\test_4_8\x64\Debug\test_4_8.exe : fatal error LNK1120: 1 个无法解析的外部命令
