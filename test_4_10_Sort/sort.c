@@ -68,29 +68,163 @@ void ShellSort(int* a, int n)
 	}
 }
 
+void Swap(int* p1, int* p2)
+{
+	int temp = *p1;
+	*p1 = *p2;
+	*p2 = temp;
+}
+
 // 选择排序
 void SelectSort(int* a, int n)
 {
-
+	int start = 0;
+	int end = n - 1;
+	while (start < end)
+	{
+		int mini = start;
+		int maxi = start;
+		//找出数组中最大的数和最小的数
+		for (int i = start; i <= end; i++)
+		{
+			if (a[i] < a[mini])
+			{
+				mini = i;
+			}
+			if (a[i] > a[maxi])
+			{
+				maxi = i;
+			}
+		}
+		//把最小的数和start位置的数进行交换
+		Swap(&a[start], &a[mini]);
+		if (a[start] == a[maxi])
+		{
+			maxi = mini;
+		}
+		//把最大的数和end 位置的数交换
+		Swap(&a[end], &a[maxi]);
+		start++;
+		end--;
+	}
 }
 
-//// 堆排序
-//void AdjustDwon(int* a, int n, int root);
-//void HeapSort(int* a, int n);
-//
-//
-//// 冒泡排序
-//void BubbleSort(int* a, int n);
-//
+// 堆排序
+
+//建堆
+void AdjustDwon(int* a, int n, int root)
+{
+	int parent = root;
+	//默认左孩子
+	int child = parent * 2 + 1;
+	while (child < n)
+	{
+		if (child + 1 < n && a[child] < a[child + 1])
+		{
+			child += 1;
+		}
+
+		if (a[child] > a[parent])
+		{
+			Swap(&a[child], &a[parent]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+void HeapSort(int* a, int n)
+{
+	for (int i = (n - 1 - 1) / 2; i >= 0; i--)
+	{
+		AdjustDwon(a, n, i);
+	}
+	int end = n - 1;
+	while (end > 0)
+	{
+		//新堆中的最大数跟最后面那个数交换
+		Swap(&a[0], &a[end]);
+		AdjustDwon(a, end, 0);
+		end--;
+	}
+}
+
+
+// 冒泡排序
+// 时间复杂度：O（N*N）
+// 最好情况:O(N)
+// N-1
+// N-2
+// ...
+// 跟直接插入排序相比？谁更好 -》 直接插入更好
+void BubbleSort(int* a, int n)
+{
+	for (int j = 0; j < n; ++j)
+	{
+		int exchange = 0;
+		for (int i = 1; i < n - j; ++i)
+		{
+			if (a[i - 1] > a[i])
+			{
+				Swap(&a[i - 1], &a[i]);
+				exchange = 1;
+			}
+		}
+
+		if (exchange == 0)
+		{
+			break;
+		}
+	}
+}
 //// 快速排序递归实现
 //// 快速排序hoare版本
 //int PartSort1(int* a, int left, int right);
 //
 //
-//// 快速排序挖坑法
-//int PartSort2(int* a, int left, int right);
-//
-//
+// 快速排序挖坑法
+void PartSort2(int* a, int left, int right)
+{
+	if (left >= right)
+		return;
+	int start = left;
+	int end = right;
+	int pivot = start;
+	int key = a[start];
+	while (start < end)
+	{
+		//右边找比key小的数
+		while (start < end && a[end] >= key)
+		{
+			end--;
+		}
+		//找到后放到坑里去
+		a[pivot] = a[end];
+		//原来位置变成坑
+		pivot = end;
+		//左边找比key小的数
+		while (start < end && a[start] <= key)
+		{
+			start++;
+		}
+		//找到后放到坑里去
+		a[pivot] = a[start];
+		//原来位置变成坑
+		pivot = start;
+
+	}//以上是快排的单趟排序
+
+	pivot = start;
+	a[pivot] = key;
+	//左子区间和右子区间有序，该序列就有序了，采用分治递归解决
+	PartSort2(a, left, pivot - 1);
+	PartSort2(a, pivot + 1, right);
+}
+
+
 //// 快速排序前后指针法
 //int PartSort3(int* a, int left, int right);
 //
@@ -160,9 +294,9 @@ void SelectSort(int* a, int n)
 void TestInsertSort()
 {
 	int a[] = { 2,4,1,6,8,3,9,0,-1,9 };
-	InsertSort(&a, sizeof(a) / sizeof(int));
+	InsertSort(a, sizeof(a) / sizeof(int));
 	printf("InsertSort: ");
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 }
 
 
@@ -170,14 +304,54 @@ void TestInsertSort()
 void TestShellSort()
 {
 	int a[] = { 2,4,1,6,8,3,9,0,-1,9 };
-	ShellSort(&a, sizeof(a) / sizeof(int));
+	ShellSort(a, sizeof(a) / sizeof(int));
 	printf("ShellSort: ");
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
+}
+
+//直接选择排序测试
+void TestSelectSort()
+{
+	int a[] = { 2,4,1,6,8,3,9,0,-1,9 };
+	SelectSort(a, sizeof(a) / sizeof(int));
+	printf("SelectSort: ");
+	ArrayPrint(a, sizeof(a) / sizeof(int));
+}
+
+//堆排序测试
+void TestHeapSort()
+{
+	int a[] = { 2,4,1,6,8,3,9,0,-1,9 };
+	HeapSort(a, sizeof(a) / sizeof(int));
+	printf("HeapSort: ");
+	ArrayPrint(a, sizeof(a) / sizeof(int));
+}
+//冒泡排序测试
+void TestBubbleSort()
+{
+	int a[] = { 2,4,1,6,8,3,9,0,-1,9 };
+	BubbleSort(a, sizeof(a) / sizeof(int));
+	printf("BubbleSort: ");
+	ArrayPrint(a, sizeof(a) / sizeof(int));
+}
+
+//快速排序挖坑法测试
+void TestPartSort2()
+{
+	int a[] = { 2,4,1,6,8,3,9,0,-1,9 };
+	PartSort2(a, 0,sizeof(a)/sizeof(int)-1);
+	printf("PartSort2: ");
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 }
 int main()
 {
 	TestInsertSort();
 	TestShellSort();
+	TestSelectSort();
+	TestHeapSort();
+	TestBubbleSort();
+	TestPartSort2();
+
 	//TestOP()
 	return 0;
 }
