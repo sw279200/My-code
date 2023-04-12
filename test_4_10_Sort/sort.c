@@ -343,15 +343,74 @@ void TestPartSort2()
 	printf("PartSort2: ");
 	ArrayPrint(a, sizeof(a) / sizeof(int));
 }
+
+void _MergeSort(int* a, int left, int right, int* tmp)
+{
+	if (left >= right)
+		return;
+
+	int mid = (left + right) >> 1;
+	// 假设 [left, mid] [mid+1, right]
+	//有序，那么我们就可以归并了
+		_MergeSort(a, left, mid, tmp);
+	_MergeSort(a, mid + 1, right, tmp);
+
+	// 归并
+	int begin1 = left, end1 = mid;
+	int begin2 = mid + 1, end2 = right;
+	int index = left;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] < a[begin2])
+		{
+			tmp[index++] = a[begin1++];
+		}
+		else
+		{
+			tmp[index++] = a[begin2++];
+		}
+	}
+
+	while (begin1 <= end1)
+	{
+		tmp[index++] = a[begin1++];
+	}
+
+	while (begin2 <= end2)
+	{
+		tmp[index++] = a[begin2++];
+	}
+
+	// 拷贝回去
+	for (int i = left; i <= right; ++i)
+	{
+		a[i] = tmp[i];
+	}
+}
+
+void MergeSort(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	_MergeSort(a, 0, n - 1, tmp);
+	free(tmp);
+}
+
+void TestMergeSort()
+{
+	int a[] = { 2,4,1,6,8,3,9,0,-1,9 };
+	MergeSort(a, sizeof(a) / sizeof(int));
+	printf("MergeSort: ");
+	ArrayPrint(a, sizeof(a) / sizeof(int));
+}
 int main()
 {
-	TestInsertSort();
-	TestShellSort();
-	TestSelectSort();
-	TestHeapSort();
-	TestBubbleSort();
-	TestPartSort2();
-
+	//TestInsertSort();
+	//TestShellSort();
+	//TestSelectSort();
+	//TestHeapSort();
+	//TestBubbleSort();
+	//TestPartSort2();
+	TestMergeSort();
 	//TestOP()
 	return 0;
 }

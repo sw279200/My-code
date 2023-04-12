@@ -1,0 +1,3 @@
+﻿  test.c
+D:\Code\sw_test_c\test_4_11\test.c(497,8): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  test_4_11.vcxproj -> D:\Code\sw_test_c\test_4_11\x64\Debug\test_4_11.exe
