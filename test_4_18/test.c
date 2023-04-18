@@ -5,21 +5,30 @@
 //FJµÄ×Ö·û´®
 #include <stdio.h>
 #include <string.h>
-#define N 64000000
-
-void solve()
+void func(int x)
+{
+	if (x == 1)
+	{
+		printf("%c", 'A');
+	}
+	else
+	{
+		func(x - 1);
+		printf("%c", 'A' + x - 1);
+		func(x - 1);
+	}
+}
+int main()
 {
 	int n = 0;
 	scanf("%d", &n);
-	char* pa = func(n);
-	printf("%s\n", pa);
-}
-
-int main()
-{
-	solve();
+	func(n);
+	printf("\n");
 	return 0;
 }
 #endif
+
+
+
 
 
