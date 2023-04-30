@@ -4,18 +4,19 @@
 int x = 0;
 int y = 0;
 
-void Menu()
+void menu()
 {
-    printf("############################\n");
-    printf("## 0. Exit        1. Play ##\n");
-    printf("############################\n");
-    printf("Please Select:> ");
+    printf("****************************\n");
+    printf("******1. 开始   0.退出******\n");
+    printf("****************************\n");
+    printf("请选择 :> ");
+
 }
 
 void PlayerMove(int board[ROW][COL], int who)
 {
     while (1) {
-        printf("\nPlayer[ %d ] Please Enter Your Postion:> ", who);
+        printf("\n玩家[%d] 请输入你需要下棋的位置:> ", who);
         scanf("%d %d", &x, &y);
         if (x<0 || y > COL) {
             printf("Postion Error!\n");
@@ -102,6 +103,8 @@ int IsOver(int board[ROW][COL])
 void ShowChessBoard(int board[ROW][COL])
 {
     printf("\033c");
+    printf("玩家1——●\n");
+    printf("玩家2——○\n");
     printf("\n\n  ");
     for (int i = 0; i < COL; i++) {
         printf("%3d", i);
@@ -150,13 +153,13 @@ void game()
     ShowChessBoard(chessboard);
     switch (result) {
     case PLAYER1_WIN:
-        printf("Player1 win!\n");
+        printf("恭喜玩家1获胜!\n");
         break;
     case PLAYER2_WIN:
-        printf("Player2 win!\n");
+        printf("恭喜玩家2获胜了!\n");
         break;
     case DROW:
-        printf("Player1 darw Player2!\n");
+        printf("平局，不服可以再战!\n");
         break;
     }
 }
