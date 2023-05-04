@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include <stdio.h>
-//º”“ª
+//“ª
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
@@ -36,4 +36,5 @@ int* plusOne(int* digits, int digitsSize, int* returnSize) {
         tmp[i] = '\0';
     }
     return tmp;
+    
 }
