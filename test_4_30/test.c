@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #if 0
-//É¾³ıÁ´±íÖĞµÄ½Úµã
+//åˆ é™¤é“¾è¡¨ä¸­çš„èŠ‚ç‚¹
 #include <stdio.h>
 /**
  * Definition for singly-linked list.
@@ -24,12 +24,13 @@ void deleteNode(struct ListNode* node) {
     cur->val = cur->next->val;
     free(cur->next);
     cur->next = NULL;
+    
 }
 #endif
 
 
 #if 0
-//2181.ºÏ²¢0Ö®¼äµÄ½Úµã
+//2181.åˆå¹¶0ä¹‹é—´çš„èŠ‚ç‚¹
 #include <stdio.h>
 /**
  * Definition for singly-linked list.
@@ -85,7 +86,7 @@ struct ListNode* mergeNodes(struct ListNode* head) {
 #endif
 
 #if 1
-//142.»·ĞÎÁ´±í¢ò
+//142.ç¯å½¢é“¾è¡¨â…¡
 #include <stdio.h>
 /**
  * Definition for singly-linked list.
@@ -106,7 +107,7 @@ struct ListNode* detectCycle(struct ListNode* head) {
 
     while (fast && fast->next)
     {
-        //ÒòÎªÒªÅĞ¶ÏfastºÍslowÊÇ·ñÏàµÈ£¬ËùÒÔÎ»²Ù×÷Òª·ÅÇ°Ãæ
+        //å› ä¸ºè¦åˆ¤æ–­fastå’Œslowæ˜¯å¦ç›¸ç­‰ï¼Œæ‰€ä»¥ä½æ“ä½œè¦æ”¾å‰é¢
         fast = fast->next->next;
         slow = slow->next;
 
