@@ -26,13 +26,14 @@ void Creat(struct TreeNode** root)
         (*root)->right = min;
         min = *root;
         Creat(&(*root)->left);
-        (*root)->left = NULL;//д���������Ȼ��һ���ݹ������
+        (*root)->left = NULL;//写外边来，不然上一步递归出问题
     }
 }
 struct TreeNode* convertBiNode(struct TreeNode* root) {
-    min = NULL;//���һ���ڵ����һ��Ϊ��,ͬʱ�����˳�ʼ��������ȫ�ֱ��������⡣
+    min = NULL;//最后一个节点的下一个为空,同时进行了初始化，避免全局变量出问题。
     Creat(&root);
     return min;
+    
 }
 
 
