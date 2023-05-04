@@ -21,6 +21,7 @@ MyLinkedList* myLinkedListCreate() {
 	phead->prev = phead;
 	phead->next = phead;
 	return phead;
+    
 }
 
 int myLinkedListGet(MyLinkedList* phead, int index) {
