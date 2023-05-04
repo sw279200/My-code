@@ -11,20 +11,20 @@
  */
 
 
-//2130. Á´±í×î´óÂÏÉúºÍ
+//2130. é“¾è¡¨æœ€å¤§å­ªç”Ÿå’Œ
 struct ListNode {
     int val;
     struct ListNode* next;
 };
 struct ListNode* reverseList(struct ListNode* head) {
 
-    //·½·¨¶þ
+    //æ–¹æ³•äºŒ
     struct ListNode* cur = head;
     struct ListNode* newhead = NULL;
     while (cur)
     {
         struct ListNode* next = cur->next;
-        //Í·²å
+        //å¤´æ’
         cur->next = newhead;
         newhead = cur;
         cur = next;
@@ -64,7 +64,7 @@ int pairSum(struct ListNode* head) {
 
 #if 1
 #include <stdio.h>
-//1669. ºÏ²¢Á½¸öÁ´±í
+//1669. åˆå¹¶ä¸¤ä¸ªé“¾è¡¨
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -86,5 +86,6 @@ struct ListNode* mergeInBetween(struct ListNode* list1, int a, int b, struct Lis
     p->next = list2;
     t->next = q;
     return list1;
+    
 }
 #endif

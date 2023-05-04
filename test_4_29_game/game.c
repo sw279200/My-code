@@ -7,16 +7,16 @@ int y = 0;
 void menu()
 {
     printf("****************************\n");
-    printf("******1. ¿ªÊ¼   0.ÍË³ö******\n");
+    printf("******1. å¼€å§‹   0.é€€å‡º******\n");
     printf("****************************\n");
-    printf("ÇëÑ¡Ôñ :> ");
+    printf("è¯·é€‰æ‹© :> ");
 
 }
 
 void PlayerMove(int board[ROW][COL], int who)
 {
     while (1) {
-        printf("\nÍæ¼Ò[%d] ÇëÊäÈëÄãĞèÒªÏÂÆåµÄÎ»ÖÃ:> ", who);
+        printf("\nç©å®¶[%d] è¯·è¾“å…¥ä½ éœ€è¦ä¸‹æ£‹çš„ä½ç½®:> ", who);
         scanf("%d %d", &x, &y);
         if (x<0 || y > COL) {
             printf("Postion Error!\n");
@@ -103,8 +103,8 @@ int IsOver(int board[ROW][COL])
 void ShowChessBoard(int board[ROW][COL])
 {
     printf("\033c");
-    printf("Íæ¼Ò1¡ª¡ª¡ñ\n");
-    printf("Íæ¼Ò2¡ª¡ª¡ğ\n");
+    printf("ç©å®¶1â€”â€”â—\n");
+    printf("ç©å®¶2â€”â€”â—‹\n");
     printf("\n\n  ");
     for (int i = 0; i < COL; i++) {
         printf("%3d", i);
@@ -115,11 +115,11 @@ void ShowChessBoard(int board[ROW][COL])
         for (int j = 0; j < COL; j++) {
             if (board[i][j] == Player1) {
                 //player1
-                printf(" ¡ñ");
+                printf(" â—");
             }
             else if (board[i][j] == Player2) {
                 //player2
-                printf(" ¡ğ");
+                printf(" â—‹");
             } 
             else {
                 //Space
@@ -153,13 +153,14 @@ void game()
     ShowChessBoard(chessboard);
     switch (result) {
     case PLAYER1_WIN:
-        printf("¹§Ï²Íæ¼Ò1»ñÊ¤!\n");
+        printf("æ­å–œç©å®¶1è·èƒœ!\n");
         break;
     case PLAYER2_WIN:
-        printf("¹§Ï²Íæ¼Ò2»ñÊ¤ÁË!\n");
+        printf("æ­å–œç©å®¶2è·èƒœäº†!\n");
         break;
     case DROW:
-        printf("Æ½¾Ö£¬²»·ş¿ÉÒÔÔÙÕ½!\n");
+        printf("å¹³å±€ï¼Œä¸æœå¯ä»¥å†æˆ˜!\n");
         break;
+        
     }
 }

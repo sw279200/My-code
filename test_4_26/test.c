@@ -3,7 +3,7 @@
 
 
 
-//����
+//鞍点
 #include<stdio.h>
 
 
@@ -32,7 +32,7 @@ void solve()
         {
 
             scanf("%d", &arr[i][j]);
-            max[i] = Max(max[i], arr[i][j]);//��ÿһ�е����ֵ������
+            max[i] = Max(max[i], arr[i][j]);//把每一行的最大值存起来
         }
     }
     for (int i = 0; i < m; i++)
@@ -40,7 +40,7 @@ void solve()
 
         for (int j = 0; j < n; j++)
         {
-            min[i] = Min(min[i], arr[j][i]);//��ÿһ���е���Сֵ������
+            min[i] = Min(min[i], arr[j][i]);//把每一行列的最小值存起来
         }
     }
     int flag = 0;
@@ -73,5 +73,7 @@ int main()
 
     solve();
     return 0;
+    
 }
+
 
