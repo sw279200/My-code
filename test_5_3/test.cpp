@@ -2,49 +2,49 @@
 
 #include <iostream>
 using namespace std;
-//µãºÍÔ²µÄÎ»ÖÃ¹ØÏµ
+//ç‚¹å’Œåœ†çš„ä½ç½®å…³ç³»
 class Point 
 {
 public:
-	int get_x()//»ñÈ¡ºá×ø±ê
+	int get_x()//è·å–æ¨ªåæ ‡
 	{
 		return p_x;
 	}
-	void set_x(int x)//ÉèÖÃºá×ø±ê
+	void set_x(int x)//è®¾ç½®æ¨ªåæ ‡
 	{
 		p_x = x;
 	}
-	int get_y()//»ñÈ¡×İ×ø±ê
+	int get_y()//è·å–çºµåæ ‡
 	{
 		return p_y;
 	}
-	void set_y(int y)//ÉèÖÃ×İ×ø±ê
+	void set_y(int y)//è®¾ç½®çºµåæ ‡
 	{
 		p_y = y;
 	}
 private:
-	int p_x;//ºá×ø±ê
-	int p_y;//×İ×ø±ê
+	int p_x;//æ¨ªåæ ‡
+	int p_y;//çºµåæ ‡
 
 };
 
 class Circle
 {
 public:
-	Point get_center()//»ñÈ¡Ô²ĞÄ
+	Point get_center()//è·å–åœ†å¿ƒ
 	{
 		return center;
 	}
-	void set_center(Point pc)//ÉèÖÃÔ²ĞÄ
+	void set_center(Point pc)//è®¾ç½®åœ†å¿ƒ
 	{
 		center = pc;
 	}
 
-	int getR()//»ñÈ¡°ë¾¶
+	int getR()//è·å–åŠå¾„
 	{
 		return radius;
 	}
-	void setR(int R)//ÉèÖÃ°ë¾¶
+	void setR(int R)//è®¾ç½®åŠå¾„
 	{
 		radius = R;
 	}
@@ -56,34 +56,34 @@ private:
 
 void Is_inCircle(Circle c, Point p)
 {
-	//Çóµãµ½Ô²ĞÄ¾àÀëµÄÆ½·½
+	//æ±‚ç‚¹åˆ°åœ†å¿ƒè·ç¦»çš„å¹³æ–¹
 	int distance =
 		(c.get_center().get_x() - p.get_x()) * (c.get_center().get_x() - p.get_x()) +
 		(c.get_center().get_y() - p.get_y()) * (c.get_center().get_y() - p.get_y());
-	//ÔÙÇó°ë¾¶µÄÆ½·½
+	//å†æ±‚åŠå¾„çš„å¹³æ–¹
 	int Rdistance = (c.getR() * c.getR());
 
 	if (Rdistance == distance)
 	{
-		cout << "µãÔÚÔ²ÉÏ" << endl;
+		cout << "ç‚¹åœ¨åœ†ä¸Š" << endl;
 	}
 	else if (Rdistance > distance)
 	{
-		cout << "µãÔÚÔ²ÄÚ" << endl;
+		cout << "ç‚¹åœ¨åœ†å†…" << endl;
 	}
 	else
 	{
-		cout << "µãÔÚÔ²Íâ" << endl;
+		cout << "ç‚¹åœ¨åœ†å¤–" << endl;
 	}
 }
 		
 int main()
 {	
-	//´´½¨Ò»¸öµã
+	//åˆ›å»ºä¸€ä¸ªç‚¹
 	Point p;
 	p.set_x(11);
 	p.set_y(10);
-	//´´½¨Ò»¸öÔ²
+	//åˆ›å»ºä¸€ä¸ªåœ†
 	Circle c;
 	Point center;
 	center.set_x(10);
@@ -91,7 +91,8 @@ int main()
 	c.setR(10);
 	c.set_center(center);
 
-	//ÅĞ¶ÏµãºÍÔ²Ö®¼äµÄÎ»ÖÃ¹ØÏµ
+	//åˆ¤æ–­ç‚¹å’Œåœ†ä¹‹é—´çš„ä½ç½®å…³ç³»
 	Is_inCircle(c, p);
 	return 0;
+    
 }
