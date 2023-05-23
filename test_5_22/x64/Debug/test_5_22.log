@@ -1,0 +1,4 @@
+﻿  test.c
+D:\Code\sw_test_c\test_5_22\test.c(100,3): warning C4033: “PrintTop”必须返回值
+D:\Code\sw_test_c\test_5_22\test.c(107,3): warning C4033: “PrintTop”必须返回值
+  test_5_22.vcxproj -> D:\Code\sw_test_c\test_5_22\x64\Debug\test_5_22.exe
