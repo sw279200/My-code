@@ -1,0 +1,4 @@
+﻿  test.c
+D:\Code\sw_test_c\test_5_23\test.c(21,3): warning C4033: “BuyNode”必须返回值
+D:\Code\sw_test_c\test_5_23\test.c(28): warning C4715: “BuyNode”: 不是所有的控件路径都返回值
+  test_5_23.vcxproj -> D:\Code\sw_test_c\test_5_23\x64\Debug\test_5_23.exe
