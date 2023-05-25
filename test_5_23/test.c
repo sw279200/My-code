@@ -116,7 +116,7 @@ int BTreeHeight(BTNode* root)
 {
 	if (root == NULL)
 		return 0;
-	
+
 	int leftTreeSize = BTreeHeight(root->left);
 	int rightTreeSize = BTreeHeight(root->right);
 
