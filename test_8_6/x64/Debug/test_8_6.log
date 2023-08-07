@@ -1,0 +1,12 @@
+﻿  test.cpp
+D:\Code\sw_test_c\test_8_6\test.cpp(6,9): error C2143: 语法错误: 缺少“;”(在“<class-head>”的前面)
+D:\Code\sw_test_c\test_8_6\test.cpp(6,18): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Code\sw_test_c\test_8_6\test.cpp(16,9): error C2065: “queue”: 未声明的标识符
+D:\Code\sw_test_c\test_8_6\test.cpp(16,24): error C2059: 语法错误:“>”
+D:\Code\sw_test_c\test_8_6\test.cpp(17,9): error C2065: “qu”: 未声明的标识符
+D:\Code\sw_test_c\test_8_6\test.cpp(19,17): error C2065: “qu”: 未声明的标识符
+D:\Code\sw_test_c\test_8_6\test.cpp(20,24): error C2065: “qu”: 未声明的标识符
+D:\Code\sw_test_c\test_8_6\test.cpp(23,34): error C2065: “qu”: 未声明的标识符
+D:\Code\sw_test_c\test_8_6\test.cpp(24,17): error C2065: “qu”: 未声明的标识符
+D:\Code\sw_test_c\test_8_6\test.cpp(34,21): error C2065: “qu”: 未声明的标识符
+D:\Code\sw_test_c\test_8_6\test.cpp(37,21): error C2065: “qu”: 未声明的标识符
