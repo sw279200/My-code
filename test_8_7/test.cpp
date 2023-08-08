@@ -33,6 +33,8 @@ using namespace std;
 
 int main()
 {
+
+
 	string s1("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
 	string s2(s1);
 	cout << (void*)s1.c_str() << endl;
