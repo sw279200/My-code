@@ -12,7 +12,8 @@ using namespace std;
 int main()
 {
 	//xiaobai::test_string1();
-	xiaobai::test_string2();
+	//xiaobai::test_string2();
+	xiaobai::test_string3();
 	return 0;
 }
 
