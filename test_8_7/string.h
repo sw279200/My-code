@@ -213,7 +213,7 @@ namespace bit
 			size_t end = pos + len;
 			if (len == npos || pos + len >= _size) // 有多少取多少
 			{
-				len = _size - len;
+				len = _size - pos;
 				end = _size;
 			}
 
