@@ -243,6 +243,47 @@ public:
 		}
 		return vv;
 	}
+
+
+	//四数之和
+	vector<vector<int>> fourSum(vector<int>& nums, int target) {
+		sort(nums.begin(), nums.end());
+		vector<vector<int>> vv;
+		int n = nums.size();
+		if (n < 4)
+		{
+			return {};
+		}
+		for (int fixNum = 0; fixNum < n;)
+		{
+			int x = fixNum + 1;
+			int size = n;
+			while (x < size)
+			{
+
+				int left = x + 1, right = size - 1;;
+				while (left < right)
+				{
+					long long sum = (long long)nums[left] + (long long)nums[right] + (long long)nums[fixNum];
+					if (sum + nums[x] > target) right--;
+					else if (sum + nums[x] < target)	left++;
+					else
+					{
+						vv.push_back({ nums[fixNum],nums[x],nums[left],nums[right] });
+						left++, right--;
+						while (right > left && nums[right] == nums[right + 1]) right--;
+						while (left < right && nums[left - 1] == nums[left]) left++;
+					}
+				}
+				x++;
+				while (x < size - 1 && nums[x] == nums[x - 1])x++;
+			}
+
+			fixNum++;
+			while (fixNum < n && nums[fixNum - 1] == nums[fixNum])fixNum++;
+		}
+		return vv;
+	}
 };
 
 int main() {
