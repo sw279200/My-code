@@ -1,7 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS 1
 
 #include<iostream>
-
+#include<unordered_map>
 #include<vector>
 #include<string>
 #include<algorithm>
@@ -213,6 +213,60 @@ public:
         }
         return ret;
     }
+
+    //串联所有单词的子串
+    vector<int> findSubstring(string s, vector<string>& words) {
+        unordered_map<string, int> hash1; //hash1存放words里面单词及其对应的个数,  
+        vector<int> v;//用来存放返回的答案
+        for (string str : words) hash1[str]++;
+        int len = words[0].size(), m = words.size(),n = s.size();
+        for (int i = 0; i < len; i++)
+        {
+            unordered_map<string, int> hash2;//hash2存放s中窗口里面的字符串
+            for (int left = i, right = i, count = 0; right <= n - len; right += len)
+            {
+                string in = s.substr(right,len);
+                hash2[in]++;                //          进窗口
+                if (hash1.count(in)&&hash2[in] <= hash1[in]) count++; //记录有效字符串的个数
+                if (right-left+1>len*m)  //判断
+                {
+                    string out = s.substr(left, len);
+                    if (hash1.count(out)&&hash2[out] <= hash1[out]) count--;  //维护count
+                    hash2[out]--;
+                    left += len; //出窗口
+                }
+                if (count==m) v.push_back(left);//更新结果
+            }
+        }
+        return v;
+    }
+
+    //最小覆盖子串
+    string minWindow(string s, string t) {
+        int hash1[128] = { 0 };  //用来记录t字符串中的各字符的个数
+        int hash2[128] = { 0 };  //用来记录滑动窗口中各个字符的个数
+        int kinds = 0;
+        for (auto ch : t) if (hash1[ch]++ == 0) kinds++;
+        int MinLen = INT_MAX, begin = -1;
+        for (int left = 0, right = 0, count = 0; right < s.size(); right++)
+        {
+            char in = s[right];
+            if (++hash2[in] == hash1[in]) count++; //记录有效字符种类
+            while (count == kinds)
+            {
+                if (MinLen > right - left + 1)  //更新结果
+                {
+                    MinLen = right - left + 1;
+                    begin = left;
+                }
+                char out = s[left++];
+                if (hash2[out]-- == hash1[out]) count--;
+            }
+
+        }
+        if (begin == -1) return "";
+        return s.substr(begin, MinLen);
+    }
 };
 
 int main()
@@ -221,6 +275,6 @@ int main()
     Solution sol;
     //cout << sol.minOperations(v, 10) << endl;
    // cout << sol.longestOnes(v, 3) << endl;
-    
+    sol.minWindow("ADOBECODEBANC", "ABC");
 	return 0;
 }
