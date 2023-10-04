@@ -148,6 +148,162 @@ public:
             nums[j] = tmp[j-left];
            
     }
+
+
+    vector<int> temp;
+    // 交易逆序对的总数
+
+    int reversePairs(vector<int>& nums) {
+        int n = nums.size() - 1;
+        temp.resize(50010);
+        return mergeSort(0, n, nums);
+    }
+
+    int mergeSort(int left, int right, vector<int>& nums)
+    {
+        if (left >= right) return 0;
+        
+        //选择中间点，分支处理
+        int mid = (left + right) >> 1;
+        
+        int ret = 0; //记录该区间逆序对的数量
+        
+        //排序  计算左半区间的逆序对并排序，计算右半边区间的逆序对并排序
+        ret += mergeSort(left, mid, nums);
+        ret += mergeSort(mid + 1, right, nums);
+
+        //计算一左一右的逆序对
+        int cur1 = left, cur2 = mid + 1, i = 0;
+        while (cur1 <= mid && cur2 <= right)
+        {
+            if (nums[cur1] <= nums[cur2])
+            {
+                tmp[i++] = nums[cur1++];
+            }
+            else
+            {
+                ret += mid - cur1 + 1;
+                tmp[i++] = nums[cur2++];
+            }
+        }
+        
+        while (cur1 <= mid)
+            tmp[i++] = nums[cur1++];
+        while (cur2 <= right)
+            tmp[i++] = nums[cur2++];
+
+        //将tmp数组中的元素拷贝回原数组
+        for (int j = left; j <= right; j++)
+            nums[j] = tmp[j - left];
+
+        return ret;
+    }
+
+    vector<int> index;
+    vector<int> ret;
+    int tmpNums[100010];
+    int tmpIndex[100010];
+
+    //计算右侧小于当前元素的个数
+    vector<int> countSmaller(vector<int>& nums) {
+        int n = nums.size();
+        index.resize(n);
+        ret.resize(n);
+        for (int i = 0; i < n; i++)
+            index[i] = i;
+        _mergeSort(0, n - 1, nums);
+        return ret;
+    }
+
+    void _mergeSort(int left, int right, vector<int>& nums)
+    {
+        if (left >= right) return;
+
+        //找一个中间点进行区间划分
+        int mid = (left + right) >> 1;
+
+        //排序
+        _mergeSort(left, mid, nums);
+        _mergeSort(mid + 1, right, nums);
+
+        //一左一右的情况
+        int cur1 = left, cur2 = mid + 1, i = 0;
+        while (cur1 <= mid && cur2 <= right)
+        {
+            if (nums[cur1] <= nums[cur2])
+            {
+                tmpNums[i] = nums[cur2];
+                tmpIndex[i++] = index[cur2++];
+            }
+            else
+            {
+                ret[index[cur1]] += right - cur2 + 1;
+                tmpNums[i] = nums[cur1];
+                tmpIndex[i++] = index[cur1++];
+
+            }
+        }
+
+        while (cur1 <= mid)
+        {
+            tmpNums[i] = nums[cur1];
+            tmpIndex[i++] = index[cur1++];
+        }
+
+        while (cur2 <= right)
+        {
+            tmpNums[i] = nums[cur2];
+            tmpIndex[i++] = index[cur2++];
+        }
+
+        for (int j = left; j <= right; j++)
+        {
+            nums[j] = tmpNums[j - left];
+            index[j] = tmpIndex[j - left];
+        }
+    }
+
+    //翻转对
+    int reversePairs(vector<int>& nums) {
+        int n = nums.size();
+        return _MergeSort(0, n - 1, nums);
+    }
+
+    int _MergeSort(int left, int right, vector<int>& nums)
+    {
+        if (left >= right) return 0;
+
+        //选一个中间点进行区间划分
+        int mid = (left + right) >> 1;
+
+        int res = 0;
+
+        //处理左边的区间翻转对的个数
+        res += _MergeSort(left, mid, nums);
+        //处理左边的区间翻转对的个数
+        res += _MergeSort(mid + 1, right, nums);
+
+        int cur1 = left, cur2 = mid + 1, i = 0;
+        while (cur1 <= mid)
+        {
+            while (cur2 <= right && nums[cur1] / 2.0 <= nums[cur2])cur2++;
+
+            if (cur2 > right) break;
+            res += right - cur2 + 1;
+            cur1++;
+        }
+        //一左一右的情况
+        cur1 = left, cur2 = mid + 1;
+        while (cur1 <= mid && cur2 <= right)
+            tmpNums[i++] = nums[cur1] <= nums[cur2] ? nums[cur2++] : nums[cur1++];
+
+        while (cur1 <= mid) tmpNums[i++] = nums[cur1++];
+
+        while (cur2 <= right) tmpNums[i++] = nums[cur2++];
+
+        for (int j = left; j <= right; j++)  nums[j] = tmpNums[j - left];
+        return res;
+    }
 };
 
 int main()
