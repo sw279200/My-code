@@ -27,6 +27,20 @@ public:
 
         return sum;
     }
+
+    //最长递归子序列
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size(), Max = 1;
+        vector<int> dp(n, 1);
+        for (int i = 1; i < n; i++)
+        {
+            int maxi = 0;
+            for (int j = 0; j < i; j++)
+                if (nums[i] > nums[j])dp[i] = max(dp[j] + 1, dp[i]);
+            Max = max(Max, dp[i]);
+        }
+        return Max;
+    }
 };
 
 int main()
