@@ -27,7 +27,7 @@ public:
         return sum;
     }
 
-    //最长递归子序列
+    //最长递增子序列
     int lengthOfLIS(vector<int>& nums) {
         int n = nums.size(), Max = 1;
         vector<int> dp(n, 1);
@@ -76,6 +76,29 @@ public:
             ret = max(ret, max(f[i], g[i]));
         }
         return ret;
+    }
+
+    //最长递增子序列的个数
+    int findNumberOfLIS(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> dp(n, 1),dpCount(n,1);
+        int leni = 1, retcount = 1;
+        for (int i = 1; i < n; i++)
+        {
+            for (int j = 0; j < i; j++)
+                if (nums[i] > nums[j])
+                {
+                    if (dp[i] == dp[j] + 1)dpCount[i] += dpCount[j];
+                    else if (dp[i] < dp[j] + 1)
+                    {
+                        dpCount[i] = dpCount[j];
+                        dp[i] = dp[j]+1;
+                    }
+                }
+            if (leni == dp[i]) retcount += dpCount[i];
+            else if (leni < dp[i]) leni = dp[i], retcount = dpCount[i];
+        }   
+        return retcount;
     }
 };
 
