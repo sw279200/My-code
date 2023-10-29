@@ -18,10 +18,10 @@ struct ListNode {
 class Solution {
 public:
     //汉诺塔问题
-    void hanota(vector<int>& A, vector<int>& B, vector<int>& C) { 
+    void hanota(vector<int>& A, vector<int>& B, vector<int>& C) {
         int n = A.size();
         move(n, A, B, C);
-    } 
+    }
 
     void move(int n, vector<int>& A, vector<int>& B, vector<int>& C)
     {
@@ -56,6 +56,15 @@ public:
         }
 
         return head;
+    }
+
+    //反转链表
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr||head->next == nullptr) return head;
+
+        ListNode* newhead = reverseList(head->next);
+        head = head->next->next;
+        head->next = nullptr;
     }
 };
 
