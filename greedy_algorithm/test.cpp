@@ -5,6 +5,7 @@
 #include<algorithm>
 #include<unordered_map>
 #include<queue>
+#include<string>
 using namespace std;
 
 class Solution {
@@ -55,6 +56,20 @@ public:
             heap.push(t);
         }
         return count;
+    }
+
+    //×î´óÊý
+    string largestNumber(vector<int>& nums) {
+        vector<string>vs;
+        for (auto ts : nums) vs.push_back(to_string(ts));
+        sort(vs.begin(), vs.end(), [](const string& s1, const string& s2)
+            {
+                return s1 + s2 > s2 + s1;
+            });
+        string str("");
+        for (auto& x : vs) str += x;
+        if (str[0] == '0') return "0";
+        else return str;
     }
 };
 
