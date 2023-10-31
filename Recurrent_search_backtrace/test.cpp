@@ -61,10 +61,19 @@ public:
     //·´×ªÁ´±í
     ListNode* reverseList(ListNode* head) {
         if (head == nullptr||head->next == nullptr) return head;
-
         ListNode* newhead = reverseList(head->next);
         head = head->next->next;
         head->next = nullptr;
+        return newhead;
+    }
+
+    ListNode* swapPairs(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        ListNode* tmp = swapPairs(head->next->next);
+        ListNode* newhead = head->next;
+        newhead->next = head;
+        head->next = tmp;
+        return newhead;
     }
 };
 
