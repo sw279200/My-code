@@ -3,6 +3,7 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+#include<unordered_map>
 using namespace std;
 
 class Solution {
@@ -114,6 +115,20 @@ public:
             Max = max(Max, dp[i]);
         }
         return Max;
+    }
+
+    //最长定差子序列
+    int longestSubsequence(vector<int>& arr, int difference) {
+        int n = arr.size();
+        unordered_map<int, int> hash;
+        hash[arr[0]] = 1;
+        int ret = 1;
+        for (int i = 1; i < n; i++)
+        {
+            hash[arr[i]] = hash[arr[i] - difference] + 1;
+            ret = max(ret, hash[arr[i]]);
+        }
+        return ret;
     }
 };
 
