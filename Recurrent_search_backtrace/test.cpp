@@ -67,6 +67,7 @@ public:
         return newhead;
     }
 
+    // 两两交换链表中的节点
     ListNode* swapPairs(ListNode* head) {
         if (head == nullptr || head->next == nullptr) return head;
         ListNode* tmp = swapPairs(head->next->next);
@@ -74,6 +75,17 @@ public:
         newhead->next = head;
         head->next = tmp;
         return newhead;
+    }
+
+    //快速幂
+    double myPow(double x, int n) {
+        return n < 0 ? 1.00 / Pow(x, -(long long)n) : Pow(x, n);
+    }
+    double Pow(double x, int n)
+    {
+        if (n == 0) return 1.0;
+        double tmp = Pow(x, n / 2);
+        return n % 2 == 0 ? tmp * tmp : tmp * tmp * x;
     }
 };
 
