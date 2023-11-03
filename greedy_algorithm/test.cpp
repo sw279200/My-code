@@ -71,6 +71,22 @@ public:
         if (str[0] == '0') return "0";
         else return str;
     }
+
+    //°Ú¶¯ĞòÁĞ
+    int wiggleMaxLength(vector<int>& nums) {
+        int n = nums.size();
+        if (n < 2) return n;
+
+        int ret = 0, left = 0;
+        for (int i = 0; i < n - 1; i++)
+        {
+            int right = nums[i + 1] - nums[i];
+            if (right == 0) continue;
+            if (left * right <= 0) ret++;
+            left = right;
+        }
+        return ret + 1;
+    }
 };
 
 int main()
