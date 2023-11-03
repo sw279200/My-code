@@ -130,6 +130,22 @@ public:
         }
         return ret;
     }
+
+    //最长的斐波那契子序列的长度
+    int lenLongestFibSubseq(vector<int>& arr) {
+        int n = arr.size(), ret = 0;
+        unordered_map<int, int> hash;
+        for (int i = 0; i < n; i++) hash[arr[i]] = i;
+        vector<vector<int>>dp(n, vector<int>(n, 2));
+        for (int i = 2; i < n; i++)
+            for (int j = 1; j < i; j++)
+            {
+                int x = arr[i] - arr[j];
+                if (hash.count(x) && arr[j] > x) dp[j][i] = dp[hash[x]][j] + 1;
+                ret = max(ret, dp[j][i]);
+            }
+        return ret < 3 ? 0 : ret;
+    }
 };
 
 int main()
