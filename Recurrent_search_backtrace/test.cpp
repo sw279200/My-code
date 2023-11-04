@@ -15,6 +15,17 @@ struct ListNode {
 };
  
 
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+ 
+
 class Solution {
 public:
     //汉诺塔问题
@@ -86,6 +97,13 @@ public:
         if (n == 0) return 1.0;
         double tmp = Pow(x, n / 2);
         return n % 2 == 0 ? tmp * tmp : tmp * tmp * x;
+    }
+
+    //计算布尔二叉树的值
+    bool evaluateTree(TreeNode* root) {
+        if (!root->left && !root->right) return root->val == 1;
+        return root->val == 2 ? evaluateTree(root->left) || evaluateTree(root->right) 
+            : evaluateTree(root->left) && evaluateTree(root->right);
     }
 };
 
