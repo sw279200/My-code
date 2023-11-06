@@ -105,6 +105,21 @@ public:
         return root->val == 2 ? evaluateTree(root->left) || evaluateTree(root->right) 
             : evaluateTree(root->left) && evaluateTree(root->right);
     }
+
+    //求根节点到叶子节点数字之和
+    int _sumNumbers(TreeNode* root, int sum) {
+        int presum = sum * 10 + root->val;
+        if (root->left == nullptr && root->right == nullptr) return presum;
+        if (!root->left) return _sumNumbers(root->right, presum);
+
+        if (!root->right) return _sumNumbers(root->left, presum);
+
+        return _sumNumbers(root->left, presum) + _sumNumbers(root->right, presum);
+    }
+    int sumNumbers(TreeNode* root) {
+
+        return _sumNumbers(root, 0);
+    }
 };
 
 int main()
