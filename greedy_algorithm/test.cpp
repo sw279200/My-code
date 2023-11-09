@@ -89,6 +89,31 @@ public:
 
 
     }
+    //最长递增子序列
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> ret;
+        ret.push_back(nums[0]);
+
+        for (int i = 1; i < n; i++)
+        {
+            if (nums[i] > ret.back()) ret.push_back(nums[i]);
+            else
+            {
+                int left = 0, right = ret.size() - 1;
+                while (left < right)
+                {
+                    int mid = (left + right) >> 1;
+                    if (ret[mid] < nums[i]) left = mid + 1;
+                    else right = mid;
+                }
+                ret[left] = nums[i];
+            }
+
+        }
+        return ret.size();
+    }
+
 };
 
 int main()
