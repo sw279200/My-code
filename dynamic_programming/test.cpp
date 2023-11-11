@@ -146,6 +146,29 @@ public:
             }
         return ret < 3 ? 0 : ret;
     }
+
+    //最长等差数列
+    int longestArithSeqLength(vector<int>& nums) {
+        int n = nums.size();
+
+        unordered_map<int, int> hash;
+        hash[nums[0]] = 0;
+
+        vector<vector<int>> dp(n, vector<int>(n, 2));
+        int ret = 2;
+        for (int i = 1; i < n; i++)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                int a = 2 * nums[i] - nums[j];
+                if (hash.count(a)) dp[i][j] = dp[hash[a]][i] + 1;
+
+                ret = max(ret, dp[i][j]);
+            }
+            hash[nums[i]] = i;
+        }
+        return ret;
+    }
 };
 
 int main()
