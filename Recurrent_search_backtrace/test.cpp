@@ -120,6 +120,22 @@ public:
 
         return _sumNumbers(root, 0);
     }
+
+    //¶þ²æÊ÷¼ôÖ¦
+    TreeNode* pruneTree(TreeNode* root) {
+        if (!root->left && !root->right && root->val == 0)
+        {
+            delete root;
+            root = nullptr;
+            return nullptr;
+        }
+
+        if (!root->right) pruneTree(root->left);
+        if (!root->left) pruneTree(root->right);
+
+
+        
+    }
 };
 
 int main()
