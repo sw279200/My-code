@@ -114,6 +114,48 @@ public:
         return ret.size();
     }
 
+    //递增的三元子序列
+    bool increasingTriplet(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> ret;
+        ret.push_back(nums[0]);
+
+        for (int i = 1; i < n; i++)
+        {
+            if (nums[i] > ret.back()) ret.push_back(nums[i]);
+            else
+            {
+                int left = 0, right = ret.size() - 1;
+                while (left < right)
+                {
+                    int mid = (left + right) >> 1;
+                    if (ret[mid] < nums[i]) left = mid + 1;
+                    else right = mid;
+                }
+                ret[left] = nums[i];
+            }
+            if (ret.size() == 3) return true;
+
+        }
+        return false;
+    }
+    
+    //最长连续递增子序列
+    int findLengthOfLCIS(vector<int>& nums) {
+        int n = nums.size(),count = 1,ret = 1;
+        for (int i = 1; i < n; i++)
+        {
+            if (nums[i - 1] < nums[i]) count++;
+            else
+            {
+                ret = max(count, ret);
+                count = 1;
+            }
+        }
+        ret = max(count, ret);
+        return ret;
+    }
+
 };
 
 int main()
