@@ -132,10 +132,26 @@ public:
 
         if (!root->right) pruneTree(root->left);
         if (!root->left) pruneTree(root->right);
-
-
-        
     }
+    long prev = LONG_MIN;
+
+    //ÑéÖ¤¶þ²æËÑË÷Ê÷
+    bool isValidBST(TreeNode* root) {
+        if (!root) return true;
+
+        bool left = isValidBST(root->left);
+        if (left == false) return false;
+        bool cur = false;
+        if (root->val > prev)
+        {
+            prev = root->val;
+            cur = true;
+        }
+        if (cur == false) return false;
+        bool right = isValidBST(root->right);
+        return left && cur && right;
+    }
+
 };
 
 int main()
