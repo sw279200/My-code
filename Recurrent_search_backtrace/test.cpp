@@ -152,6 +152,22 @@ public:
         return left && cur && right;
     }
 
+    //二叉搜索树中第k小的元素
+    int smallk = -1;
+    int kthSmallest(TreeNode* root, int k) {
+        dfs(root, k);
+        return smallk;
+    }
+
+    void dfs(TreeNode* root, int& k)
+    {
+        if (!root || k == 0) return;
+        dfs(root->left, k);
+        k--;
+        if (k == 0) smallk = root->val;
+        dfs(root->right, k);
+    }
+
 };
 
 int main()
