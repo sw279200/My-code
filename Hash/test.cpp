@@ -45,6 +45,7 @@ using namespace std;
 
 int main()
 {
-
+	hash_bucket::TestHT1();
+	//open_address::TestHT2();
 	return 0;
 }
