@@ -42,10 +42,14 @@ using namespace std;
 // 
 //	return 0;
 //}
+#include"MyUnorderedMap.h"
+#include"MyUnorderedSet.h"
 
 int main()
 {
-	hash_bucket::TestHT1();
+	//hash_bucket::TestHT1();
 	//open_address::TestHT2();
+	//bit::test_set();
+	bit::test_map();
 	return 0;
 }
