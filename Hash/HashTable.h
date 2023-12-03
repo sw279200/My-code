@@ -227,7 +227,7 @@ namespace hash_bucket
 		 {}
 	 };
 
-
+	 //前置声明
 	 template<class K, class T,class KeyOfT, class Hash>
 	 class HashTable;
 
@@ -390,8 +390,8 @@ namespace hash_bucket
 
 						 // 挪动到映射的新表
 						 size_t hashi = hf(kot(cur->_data)) % newTables.size();
-						 cur->_next = newTables[i];
-						 newTables[i] = cur;
+						 cur->_next = newTables[hashi];
+						 newTables[hashi] = cur;
 
 						 cur = next;
 					 }
