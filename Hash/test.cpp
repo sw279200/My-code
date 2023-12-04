@@ -3,6 +3,7 @@
 #include<iostream>
 #include<unordered_set>
 #include<unordered_map>
+#include<string>
 using namespace std;
 #include"HashTable.h"
 
@@ -77,14 +78,23 @@ using namespace std;
 //	return 0;
 //}
 
+//int main()
+//{
+//	int a[] = { 1 ,4,1,4,23,5,9,44,88,77,44,88,99,78,7};
+//	bit::twobitset<100>bs;
+//	for (auto e : a)
+//	{
+//		bs.set(e);
+//	}
+//	bs.PrintOnce();
+//	return 0;
+//}
+
+#include"BloomFilter.h"
+
 int main()
 {
-	int a[] = { 1 ,4,1,4,23,5,9,44,88,77,44,88,99,78,7};
-	bit::twobitset<100>bs;
-	for (auto e : a)
-	{
-		bs.set(e);
-	}
-	bs.PrintOnce();
+	//TestBF1();
+	TestBF2();
 	return 0;
 }
