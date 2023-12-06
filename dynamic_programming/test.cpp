@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+ï»¿#define _CRT_SECURE_NO_WARNINGS 1
 
 #include<iostream>
 #include<vector>
@@ -8,7 +8,7 @@ using namespace std;
 
 class Solution {
 public:
-    //»·ÈÆ×Ö·û´®ÖĞÎ¨Ò»µÄ×Ó×Ö·û´®
+    //ç¯ç»•å­—ç¬¦ä¸²ä¸­å”¯ä¸€çš„å­å­—ç¬¦ä¸²
     int findSubstringInWraproundString(string s) {
         int n = s.size();
         vector<int> dp(n, 1);
@@ -28,7 +28,7 @@ public:
         return sum;
     }
 
-    //×î³¤µİÔö×ÓĞòÁĞ
+    //æœ€é•¿é€’å¢å­åºåˆ—
     int lengthOfLIS(vector<int>& nums) {
         int n = nums.size(), Max = 1;
         vector<int> dp(n, 1);
@@ -41,7 +41,7 @@ public:
         }
         return Max;
     }
-    //°Ú¶¯ĞòÁĞ
+    //æ‘†åŠ¨åºåˆ—
     int wiggleMaxLength(vector<int>& nums) {
         /*int n = nums.size();
         vector<int> v, dp(n, 0);
@@ -63,7 +63,7 @@ public:
         }
         return Max;*/
 
-        //·½·¨¶ş£º
+        //æ–¹æ³•äºŒï¼š
         int n = nums.size();
         vector<int> g(n, 1), f(n, 1);
         int ret = 1;
@@ -79,7 +79,7 @@ public:
         return ret;
     }
 
-    //×î³¤µİÔö×ÓĞòÁĞµÄ¸öÊı
+    //æœ€é•¿é€’å¢å­åºåˆ—çš„ä¸ªæ•°
     int findNumberOfLIS(vector<int>& nums) {
         int n = nums.size();
         vector<int> dp(n, 1),dpCount(n,1);
@@ -102,7 +102,7 @@ public:
         return retcount;
     }
 
-    //×î³¤Êı¶ÔÁ´
+    //æœ€é•¿æ•°å¯¹é“¾
     int findLongestChain(vector<vector<int>>& pairs) {
         int n = pairs.size();
         sort(pairs.begin(), pairs.end());
@@ -117,7 +117,7 @@ public:
         return Max;
     }
 
-    //×î³¤¶¨²î×ÓĞòÁĞ
+    //æœ€é•¿å®šå·®å­åºåˆ—
     int longestSubsequence(vector<int>& arr, int difference) {
         int n = arr.size();
         unordered_map<int, int> hash;
@@ -131,7 +131,7 @@ public:
         return ret;
     }
 
-    //×î³¤µÄì³²¨ÄÇÆõ×ÓĞòÁĞµÄ³¤¶È
+    //æœ€é•¿çš„æ–æ³¢é‚£å¥‘å­åºåˆ—çš„é•¿åº¦
     int lenLongestFibSubseq(vector<int>& arr) {
         int n = arr.size(), ret = 0;
         unordered_map<int, int> hash;
@@ -147,7 +147,7 @@ public:
         return ret < 3 ? 0 : ret;
     }
 
-    //×î³¤µÈ²îÊıÁĞ
+    //æœ€é•¿ç­‰å·®æ•°åˆ—
     int longestArithSeqLength(vector<int>& nums) {
         int n = nums.size();
 
@@ -170,7 +170,7 @@ public:
         return ret;
     }
 
-    //µÈ²îÊıÁĞ»®·Ö II - ×ÓĞòÁĞ
+    //ç­‰å·®æ•°åˆ—åˆ’åˆ† II - å­åºåˆ—
     int numberOfArithmeticSlices(vector<int>& nums) {
         int n = nums.size();
         unordered_map<long long, vector<int>>hash;
@@ -197,7 +197,7 @@ public:
     }
 
 
-    // »ØÎÄ×Ó´®
+    // å›æ–‡å­ä¸²
     int countSubstrings(string s) {
         int n = s.size();
         vector<vector<int>>dp(n, vector<int>(n));
@@ -217,6 +217,79 @@ public:
         }
 
         return ret;
+    }
+
+
+    //æœ€é•¿å›æ–‡å­ä¸²
+    string longestPalindrome(string s) {
+        int n = s.size();
+        vector<vector<int>> dp(n,vector<int>(n,0));
+        int start = 0, end = 0,len = INT_MIN;
+        for (int i = n - 1; i >= 0; i--)
+        {
+            for (int j = i; j < n; j++)
+            {
+                if (s[i] == s[j])
+                {
+                    if (i == j) dp[i][j] = 1;
+                    else if (i + 1 == j)dp[i][j] = 1;
+                    else if (dp[i + 1][j - 1] == 1)dp[i][j] = 1;
+                    if (dp[i][j]==1&&len < j - i + 1)
+                    {
+                        len = j - i + 1;
+                        start = i;
+                        end = j;
+                    }
+                }
+            }
+        }
+        return s.substr(start, len);    
+    }
+
+    //1745. åˆ†å‰²å›æ–‡ä¸² IV
+    bool checkPartitioning(string s) {
+        /*int n = s.size();
+        vector<vector<int>>dp(n, vector<int>(n));
+        int ret = 0;
+        for (int i = n - 1; i >= 0; i--)
+        {
+            for (int j = i; j < n; j++)
+            {
+                if (s[i] == s[j])
+                {
+                    if (i == j)dp[i][j] = 1;
+                    else if (i + 1 == j)dp[i][j] = 1;
+                    else if (dp[i + 1][j - 1] == 1)dp[i][j] = 1;
+                }
+            }
+        }
+
+        for (int i = 1; i < n - 1; i++)
+        {
+            for (int j = i; j < n - 1; j++)
+            {
+                if (dp[0][i - 1] == 1 && dp[i][j] == 1 && dp[j + 1][n - 1] == 1)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;*/
+
+        // 1. â½¤ dp æŠŠæ‰€æœ‰çš„â¼¦ä¸²æ˜¯å¦æ˜¯å›â½‚é¢„å¤„ç†â¼€ä¸‹
+        int n = s.size();
+        vector<vector<bool>> dp(n, vector<bool>(n));
+        for (int i = n - 1; i >= 0; i--)
+            for (int j = i; j < n; j++)
+                if (s[i] == s[j])
+                    dp[i][j] = i + 1 < j ? dp[i + 1][j - 1] : true;
+        // 2. æšä¸¾æ‰€æœ‰çš„ç¬¬â¼†ä¸ªå­—ç¬¦ä¸²çš„èµ·å§‹ä½ç½®ä»¥åŠç»“æŸä½ç½®
+        for (int i = 1; i < n - 1; i++)
+            for (int j = i; j < n - 1; j++)
+                if (dp[0][i - 1] && dp[i][j] && dp[j + 1][n - 1])
+                    return true;
+        return false;
     }
 };
 
