@@ -2,24 +2,24 @@
 
 #include "Heap.h"
 
-//void Test()
-//{
-//	HP hp;
-//	HeapInit(&hp);
-//	int a[] = { 65,100,70,32,50,60 };
-//	for (int i = 0; i < sizeof(a) / sizeof(int); i++)
-//	{
-//		HeapPush(&hp, a[i]);
-//	}
-//
-//	while (!HeapEmpty(&hp))
-//	{
-//		int top = HeapTop(&hp);
-//		printf("%d\n", top);
-//		HeapPop(&hp);
-//	}
-//
-//}
+void Test()
+{
+	HP hp;
+	HeapInit(&hp);
+	int a[] = { 50,40,95,20,15,70,60,45,80 };
+	for (int i = 0; i < sizeof(a) / sizeof(int); i++)
+	{
+		HeapPush(&hp, a[i]);
+	}
+
+	while (!HeapEmpty(&hp))
+	{
+		int top = HeapTop(&hp);
+		printf("%d ", top);
+		HeapPop(&hp);
+	}
+
+}
 
 ////弊端，1.得先有一个堆  2.空间复杂度+拷贝
 //void HeapSort(int *a,int n)
@@ -148,7 +148,21 @@ int main()
 	}*/
 
 	//CreatData();
-	PrintTop(5);
+	//PrintTop(5);
+
+	HP hp;
+	HeapInit(&hp);
+	int a[] = { 50,40,95,20,15,70,60,45,80 };
+	int size = sizeof(a) / sizeof(a[0]);
+	
+	HeapSort(a, size);
+
+	for (int i = 0; i < size; i++)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+	//Test();
 
 	return 0;
 }
