@@ -8,7 +8,7 @@
 #pragma warning(disable:4996)
 #pragma comment(lib,"ws2_32.lib")
 
-uint16_t serverport = 8888;
+uint16_t serverport = 8080;
 std::string serverip = "112.74.40.147";
 
 int main()
