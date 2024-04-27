@@ -4,6 +4,7 @@
 #include<vector>
 #include<algorithm>
 #include<stack>
+#include<string>
 using namespace std;
 
 struct ListNode {
@@ -166,6 +167,29 @@ public:
         k--;
         if (k == 0) smallk = root->val;
         dfs(root->right, k);
+    }
+
+    vector<string> ret;
+
+    // 257. 二叉树的所有路径
+    vector<string> binaryTreePaths(TreeNode* root) {
+        string path;
+        if (root == nullptr) return ret;
+        dfs(root, path);
+        return ret;
+    }
+
+    void dfs(TreeNode* root, string path)
+    {
+        path += to_string(root->val);
+        if (!root->left && !root->right)
+        {
+            ret.push_back(path);
+            return;
+        }
+        path += "->";
+        if (root->left)dfs(root->left, path);
+        if (root->right)dfs(root->right, path);
     }
 
 };
